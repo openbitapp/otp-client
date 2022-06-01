@@ -70,7 +70,7 @@ class Step implements ModelInterface, ArrayAccess, \JsonSerializable
         'lat' => 'double',
         'lon' => 'double',
         'alerts' => '\OpenBitApp\OTPClient\Model\LocalizedAlert[]',
-        'elevation' => '\OpenBitApp\OTPClient\Model\Elevation[]'
+        'elevation' => 'string'
     ];
 
     /**
@@ -574,7 +574,7 @@ class Step implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets elevation
      *
-     * @return \OpenBitApp\OTPClient\Model\Elevation[]
+     * @return string
      */
     public function getElevation()
     {
@@ -584,7 +584,7 @@ class Step implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets elevation
      *
-     * @param \OpenBitApp\OTPClient\Model\Elevation[] $elevation elevation
+     * @param string $elevation elevation
      *
      * @return self
      */
