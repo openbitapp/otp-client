@@ -129,14 +129,15 @@ class OtpApi
      * @param  string $lang lang (required)
      * @param  bool $show_intermediate_stops show_intermediate_stops (optional)
      * @param  string $banned_routes banned_routes (optional)
+     * @param  float $max_walk_distance max_walk_distance (optional)
      *
      * @throws \OpenBitApp\OTPClient\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenBitApp\OTPClient\Model\OTPPlanResponse
      */
-    public function getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null)
+    public function getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null, $max_walk_distance = null)
     {
-        list($response) = $this->getPlanWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes);
+        list($response) = $this->getPlanWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes, $max_walk_distance);
         return $response;
     }
 
@@ -154,14 +155,15 @@ class OtpApi
      * @param  string $lang (required)
      * @param  bool $show_intermediate_stops (optional)
      * @param  string $banned_routes (optional)
+     * @param  float $max_walk_distance (optional)
      *
      * @throws \OpenBitApp\OTPClient\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenBitApp\OTPClient\Model\OTPPlanResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPlanWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null)
+    public function getPlanWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null, $max_walk_distance = null)
     {
-        $request = $this->getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes);
+        $request = $this->getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes, $max_walk_distance);
 
         try {
             $options = $this->createHttpClientOption();
@@ -255,13 +257,14 @@ class OtpApi
      * @param  string $lang (required)
      * @param  bool $show_intermediate_stops (optional)
      * @param  string $banned_routes (optional)
+     * @param  float $max_walk_distance (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPlanAsync($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null)
+    public function getPlanAsync($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null, $max_walk_distance = null)
     {
-        return $this->getPlanAsyncWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes)
+        return $this->getPlanAsyncWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes, $max_walk_distance)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -283,14 +286,15 @@ class OtpApi
      * @param  string $lang (required)
      * @param  bool $show_intermediate_stops (optional)
      * @param  string $banned_routes (optional)
+     * @param  float $max_walk_distance (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPlanAsyncWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null)
+    public function getPlanAsyncWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null, $max_walk_distance = null)
     {
         $returnType = '\OpenBitApp\OTPClient\Model\OTPPlanResponse';
-        $request = $this->getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes);
+        $request = $this->getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes, $max_walk_distance);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -337,11 +341,12 @@ class OtpApi
      * @param  string $lang (required)
      * @param  bool $show_intermediate_stops (optional)
      * @param  string $banned_routes (optional)
+     * @param  float $max_walk_distance (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null)
+    public function getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null, $max_walk_distance = null)
     {
         // verify the required parameter 'from_place' is set
         if ($from_place === null || (is_array($from_place) && count($from_place) === 0)) {
@@ -490,6 +495,17 @@ class OtpApi
             }
             else {
                 $queryParams['lang'] = $lang;
+            }
+        }
+        // query params
+        if ($max_walk_distance !== null) {
+            if('form' === 'form' && is_array($max_walk_distance)) {
+                foreach($max_walk_distance as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['maxWalkDistance'] = $max_walk_distance;
             }
         }
 

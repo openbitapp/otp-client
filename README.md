@@ -64,9 +64,10 @@ $mode = 'mode_example'; // string
 $lang = 'lang_example'; // string
 $show_intermediate_stops = True; // bool
 $banned_routes = 'banned_routes_example'; // string
+$max_walk_distance = 3.4; // float
 
 try {
-    $result = $apiInstance->getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes);
+    $result = $apiInstance->getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes, $max_walk_distance);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OtpApi->getPlan: ', $e->getMessage(), PHP_EOL;
