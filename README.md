@@ -63,11 +63,21 @@ $arrive_by = True; // bool
 $mode = 'mode_example'; // string
 $lang = 'lang_example'; // string
 $show_intermediate_stops = True; // bool
-$banned_routes = 'banned_routes_example'; // string
 $max_walk_distance = 3.4; // float
+$wait_reluctance = 3.4; // float
+$walk_reluctance = 3.4; // float
+$preferred_agencies = 'preferred_agencies_example'; // string
+$preferred_routes = 'preferred_routes_example'; // string
+$banned_agencies = 'banned_agencies_example'; // string
+$banned_routes = 'banned_routes_example'; // string
+$banned_stops = 'banned_stops_example'; // string
+$banned_trips = 'banned_trips_example'; // string
+$unpreferred_agencies = 'unpreferred_agencies_example'; // string
+$unpreferred_routes = 'unpreferred_routes_example'; // string
+$transfer_penalty = 'transfer_penalty_example'; // string
 
 try {
-    $result = $apiInstance->getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes, $max_walk_distance);
+    $result = $apiInstance->getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OtpApi->getPlan: ', $e->getMessage(), PHP_EOL;

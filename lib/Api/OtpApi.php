@@ -128,16 +128,26 @@ class OtpApi
      * @param  string $mode mode (required)
      * @param  string $lang lang (required)
      * @param  bool $show_intermediate_stops show_intermediate_stops (optional)
-     * @param  string $banned_routes banned_routes (optional)
      * @param  float $max_walk_distance max_walk_distance (optional)
+     * @param  float $wait_reluctance wait_reluctance (optional)
+     * @param  float $walk_reluctance walk_reluctance (optional)
+     * @param  string $preferred_agencies preferred_agencies (optional)
+     * @param  string $preferred_routes preferred_routes (optional)
+     * @param  string $banned_agencies banned_agencies (optional)
+     * @param  string $banned_routes banned_routes (optional)
+     * @param  string $banned_stops banned_stops (optional)
+     * @param  string $banned_trips banned_trips (optional)
+     * @param  string $unpreferred_agencies unpreferred_agencies (optional)
+     * @param  string $unpreferred_routes unpreferred_routes (optional)
+     * @param  string $transfer_penalty transfer_penalty (optional)
      *
      * @throws \OpenBitApp\OTPClient\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenBitApp\OTPClient\Model\OTPPlanResponse
      */
-    public function getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null, $max_walk_distance = null)
+    public function getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null)
     {
-        list($response) = $this->getPlanWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes, $max_walk_distance);
+        list($response) = $this->getPlanWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty);
         return $response;
     }
 
@@ -154,16 +164,26 @@ class OtpApi
      * @param  string $mode (required)
      * @param  string $lang (required)
      * @param  bool $show_intermediate_stops (optional)
-     * @param  string $banned_routes (optional)
      * @param  float $max_walk_distance (optional)
+     * @param  float $wait_reluctance (optional)
+     * @param  float $walk_reluctance (optional)
+     * @param  string $preferred_agencies (optional)
+     * @param  string $preferred_routes (optional)
+     * @param  string $banned_agencies (optional)
+     * @param  string $banned_routes (optional)
+     * @param  string $banned_stops (optional)
+     * @param  string $banned_trips (optional)
+     * @param  string $unpreferred_agencies (optional)
+     * @param  string $unpreferred_routes (optional)
+     * @param  string $transfer_penalty (optional)
      *
      * @throws \OpenBitApp\OTPClient\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenBitApp\OTPClient\Model\OTPPlanResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPlanWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null, $max_walk_distance = null)
+    public function getPlanWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null)
     {
-        $request = $this->getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes, $max_walk_distance);
+        $request = $this->getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty);
 
         try {
             $options = $this->createHttpClientOption();
@@ -256,15 +276,25 @@ class OtpApi
      * @param  string $mode (required)
      * @param  string $lang (required)
      * @param  bool $show_intermediate_stops (optional)
-     * @param  string $banned_routes (optional)
      * @param  float $max_walk_distance (optional)
+     * @param  float $wait_reluctance (optional)
+     * @param  float $walk_reluctance (optional)
+     * @param  string $preferred_agencies (optional)
+     * @param  string $preferred_routes (optional)
+     * @param  string $banned_agencies (optional)
+     * @param  string $banned_routes (optional)
+     * @param  string $banned_stops (optional)
+     * @param  string $banned_trips (optional)
+     * @param  string $unpreferred_agencies (optional)
+     * @param  string $unpreferred_routes (optional)
+     * @param  string $transfer_penalty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPlanAsync($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null, $max_walk_distance = null)
+    public function getPlanAsync($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null)
     {
-        return $this->getPlanAsyncWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes, $max_walk_distance)
+        return $this->getPlanAsyncWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -285,16 +315,26 @@ class OtpApi
      * @param  string $mode (required)
      * @param  string $lang (required)
      * @param  bool $show_intermediate_stops (optional)
-     * @param  string $banned_routes (optional)
      * @param  float $max_walk_distance (optional)
+     * @param  float $wait_reluctance (optional)
+     * @param  float $walk_reluctance (optional)
+     * @param  string $preferred_agencies (optional)
+     * @param  string $preferred_routes (optional)
+     * @param  string $banned_agencies (optional)
+     * @param  string $banned_routes (optional)
+     * @param  string $banned_stops (optional)
+     * @param  string $banned_trips (optional)
+     * @param  string $unpreferred_agencies (optional)
+     * @param  string $unpreferred_routes (optional)
+     * @param  string $transfer_penalty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPlanAsyncWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null, $max_walk_distance = null)
+    public function getPlanAsyncWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null)
     {
         $returnType = '\OpenBitApp\OTPClient\Model\OTPPlanResponse';
-        $request = $this->getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $banned_routes, $max_walk_distance);
+        $request = $this->getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -340,13 +380,23 @@ class OtpApi
      * @param  string $mode (required)
      * @param  string $lang (required)
      * @param  bool $show_intermediate_stops (optional)
-     * @param  string $banned_routes (optional)
      * @param  float $max_walk_distance (optional)
+     * @param  float $wait_reluctance (optional)
+     * @param  float $walk_reluctance (optional)
+     * @param  string $preferred_agencies (optional)
+     * @param  string $preferred_routes (optional)
+     * @param  string $banned_agencies (optional)
+     * @param  string $banned_routes (optional)
+     * @param  string $banned_stops (optional)
+     * @param  string $banned_trips (optional)
+     * @param  string $unpreferred_agencies (optional)
+     * @param  string $unpreferred_routes (optional)
+     * @param  string $transfer_penalty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $banned_routes = null, $max_walk_distance = null)
+    public function getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null)
     {
         // verify the required parameter 'from_place' is set
         if ($from_place === null || (is_array($from_place) && count($from_place) === 0)) {
@@ -476,17 +526,6 @@ class OtpApi
             }
         }
         // query params
-        if ($banned_routes !== null) {
-            if('form' === 'form' && is_array($banned_routes)) {
-                foreach($banned_routes as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['bannedRoutes'] = $banned_routes;
-            }
-        }
-        // query params
         if ($lang !== null) {
             if('form' === 'form' && is_array($lang)) {
                 foreach($lang as $key => $value) {
@@ -506,6 +545,127 @@ class OtpApi
             }
             else {
                 $queryParams['maxWalkDistance'] = $max_walk_distance;
+            }
+        }
+        // query params
+        if ($wait_reluctance !== null) {
+            if('form' === 'form' && is_array($wait_reluctance)) {
+                foreach($wait_reluctance as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['waitReluctance'] = $wait_reluctance;
+            }
+        }
+        // query params
+        if ($walk_reluctance !== null) {
+            if('form' === 'form' && is_array($walk_reluctance)) {
+                foreach($walk_reluctance as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['walkReluctance'] = $walk_reluctance;
+            }
+        }
+        // query params
+        if ($preferred_agencies !== null) {
+            if('form' === 'form' && is_array($preferred_agencies)) {
+                foreach($preferred_agencies as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['preferredAgencies'] = $preferred_agencies;
+            }
+        }
+        // query params
+        if ($preferred_routes !== null) {
+            if('form' === 'form' && is_array($preferred_routes)) {
+                foreach($preferred_routes as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['preferredRoutes'] = $preferred_routes;
+            }
+        }
+        // query params
+        if ($banned_agencies !== null) {
+            if('form' === 'form' && is_array($banned_agencies)) {
+                foreach($banned_agencies as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['bannedAgencies'] = $banned_agencies;
+            }
+        }
+        // query params
+        if ($banned_routes !== null) {
+            if('form' === 'form' && is_array($banned_routes)) {
+                foreach($banned_routes as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['bannedRoutes'] = $banned_routes;
+            }
+        }
+        // query params
+        if ($banned_stops !== null) {
+            if('form' === 'form' && is_array($banned_stops)) {
+                foreach($banned_stops as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['bannedStops'] = $banned_stops;
+            }
+        }
+        // query params
+        if ($banned_trips !== null) {
+            if('form' === 'form' && is_array($banned_trips)) {
+                foreach($banned_trips as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['bannedTrips'] = $banned_trips;
+            }
+        }
+        // query params
+        if ($unpreferred_agencies !== null) {
+            if('form' === 'form' && is_array($unpreferred_agencies)) {
+                foreach($unpreferred_agencies as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['unpreferredAgencies'] = $unpreferred_agencies;
+            }
+        }
+        // query params
+        if ($unpreferred_routes !== null) {
+            if('form' === 'form' && is_array($unpreferred_routes)) {
+                foreach($unpreferred_routes as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['unpreferredRoutes'] = $unpreferred_routes;
+            }
+        }
+        // query params
+        if ($transfer_penalty !== null) {
+            if('form' === 'form' && is_array($transfer_penalty)) {
+                foreach($transfer_penalty as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['transferPenalty'] = $transfer_penalty;
             }
         }
 
