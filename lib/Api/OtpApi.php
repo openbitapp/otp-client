@@ -141,14 +141,15 @@ class OtpApi
      * @param  string $unpreferred_routes unpreferred_routes (optional)
      * @param  string $transfer_penalty transfer_penalty (optional)
      * @param  int $num_itineraries num_itineraries (optional)
+     * @param  int $min_transfer_time min_transfer_time (optional)
      *
      * @throws \OpenBitApp\OTPClient\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenBitApp\OTPClient\Model\OTPPlanResponse
      */
-    public function getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null, $num_itineraries = null)
+    public function getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null, $num_itineraries = null, $min_transfer_time = null)
     {
-        list($response) = $this->getPlanWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty, $num_itineraries);
+        list($response) = $this->getPlanWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty, $num_itineraries, $min_transfer_time);
         return $response;
     }
 
@@ -178,14 +179,15 @@ class OtpApi
      * @param  string $unpreferred_routes (optional)
      * @param  string $transfer_penalty (optional)
      * @param  int $num_itineraries (optional)
+     * @param  int $min_transfer_time (optional)
      *
      * @throws \OpenBitApp\OTPClient\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenBitApp\OTPClient\Model\OTPPlanResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPlanWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null, $num_itineraries = null)
+    public function getPlanWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null, $num_itineraries = null, $min_transfer_time = null)
     {
-        $request = $this->getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty, $num_itineraries);
+        $request = $this->getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty, $num_itineraries, $min_transfer_time);
 
         try {
             $options = $this->createHttpClientOption();
@@ -291,13 +293,14 @@ class OtpApi
      * @param  string $unpreferred_routes (optional)
      * @param  string $transfer_penalty (optional)
      * @param  int $num_itineraries (optional)
+     * @param  int $min_transfer_time (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPlanAsync($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null, $num_itineraries = null)
+    public function getPlanAsync($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null, $num_itineraries = null, $min_transfer_time = null)
     {
-        return $this->getPlanAsyncWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty, $num_itineraries)
+        return $this->getPlanAsyncWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty, $num_itineraries, $min_transfer_time)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -331,14 +334,15 @@ class OtpApi
      * @param  string $unpreferred_routes (optional)
      * @param  string $transfer_penalty (optional)
      * @param  int $num_itineraries (optional)
+     * @param  int $min_transfer_time (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPlanAsyncWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null, $num_itineraries = null)
+    public function getPlanAsyncWithHttpInfo($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null, $num_itineraries = null, $min_transfer_time = null)
     {
         $returnType = '\OpenBitApp\OTPClient\Model\OTPPlanResponse';
-        $request = $this->getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty, $num_itineraries);
+        $request = $this->getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty, $num_itineraries, $min_transfer_time);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -397,11 +401,12 @@ class OtpApi
      * @param  string $unpreferred_routes (optional)
      * @param  string $transfer_penalty (optional)
      * @param  int $num_itineraries (optional)
+     * @param  int $min_transfer_time (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null, $num_itineraries = null)
+    public function getPlanRequest($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops = null, $max_walk_distance = null, $wait_reluctance = null, $walk_reluctance = null, $preferred_agencies = null, $preferred_routes = null, $banned_agencies = null, $banned_routes = null, $banned_stops = null, $banned_trips = null, $unpreferred_agencies = null, $unpreferred_routes = null, $transfer_penalty = null, $num_itineraries = null, $min_transfer_time = null)
     {
         // verify the required parameter 'from_place' is set
         if ($from_place === null || (is_array($from_place) && count($from_place) === 0)) {
@@ -682,6 +687,17 @@ class OtpApi
             }
             else {
                 $queryParams['numItineraries'] = $num_itineraries;
+            }
+        }
+        // query params
+        if ($min_transfer_time !== null) {
+            if('form' === 'form' && is_array($min_transfer_time)) {
+                foreach($min_transfer_time as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['minTransferTime'] = $min_transfer_time;
             }
         }
 

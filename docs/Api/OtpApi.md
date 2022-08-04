@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `getPlan()`
 
 ```php
-getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty, $num_itineraries): \OpenBitApp\OTPClient\Model\OTPPlanResponse
+getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty, $num_itineraries, $min_transfer_time): \OpenBitApp\OTPClient\Model\OTPPlanResponse
 ```
 
 Calcolo percorso
@@ -49,9 +49,10 @@ $unpreferred_agencies = 'unpreferred_agencies_example'; // string
 $unpreferred_routes = 'unpreferred_routes_example'; // string
 $transfer_penalty = 'transfer_penalty_example'; // string
 $num_itineraries = 56; // int
+$min_transfer_time = 56; // int
 
 try {
-    $result = $apiInstance->getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty, $num_itineraries);
+    $result = $apiInstance->getPlan($from_place, $to_place, $date, $time, $arrive_by, $mode, $lang, $show_intermediate_stops, $max_walk_distance, $wait_reluctance, $walk_reluctance, $preferred_agencies, $preferred_routes, $banned_agencies, $banned_routes, $banned_stops, $banned_trips, $unpreferred_agencies, $unpreferred_routes, $transfer_penalty, $num_itineraries, $min_transfer_time);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OtpApi->getPlan: ', $e->getMessage(), PHP_EOL;
@@ -83,6 +84,7 @@ Name | Type | Description  | Notes
  **unpreferred_routes** | **string**|  | [optional]
  **transfer_penalty** | **string**|  | [optional]
  **num_itineraries** | **int**|  | [optional]
+ **min_transfer_time** | **int**|  | [optional]
 
 ### Return type
 
